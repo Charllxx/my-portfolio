@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog CMS Developer | Oluwole Charles Peter</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: #0a192f; color: #ccd6f6; }
+    .text-emerald-400 { color: #10b981; }
+    .bg-emerald-500 { background-color: #059669; }
+    .bg-emerald-600:hover { background-color: #047857; }
+    .border-emerald-500 { border-color: #059669; }
+    .hover\:text-emerald-400:hover { color: #10b981; }
+    .hover\:bg-emerald-500:hover { background-color: #059669; }
+    .hover\:text-black:hover { color: #000; }
+    .hover\:border-emerald-400:hover { border-color: #10b981; }
+    .hover\:shadow-emerald-500\/20:hover { box-shadow: 0 0 10px rgba(5,150,105,0.2); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="peter.html" class="text-2xl font-bold text-emerald-400 hover:text-emerald-300">Charles Peter</a>
+    <ul class="flex space-x-8">
+      <li><a href="peter.html" class="text-gray-300 hover:text-emerald-400">Home</a></li>
+      <li><a href="#projects" class="text-gray-300 hover:text-emerald-400">Projects</a></li>
+      <li><a href="#workflow" class="text-gray-300 hover:text-emerald-400">Workflow</a></li>
+      <li><a href="#contact" class="text-gray-300 hover:text-emerald-400">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 px-6 sm:px-10 md:px-24">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-1/2">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
+        Blog CMS <span class="text-emerald-400">Developer</span>
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+        I create powerful, user-friendly content management systems to help bloggers and writers publish, manage, and grow their digital presence efficiently.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#projects" class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-6 py-3 rounded-lg">View Projects</a>
+        <a href="#contact" class="border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-black font-semibold px-6 py-3 rounded-lg">Hire Me</a>
+      </div>
+    </div>
+    <div class="md:w-1/2 mt-10 md:mt-0">
+      <img src="https://via.placeholder.com/600x400/1e293b/ccd6f6?text=Blog+CMS+Dashboard" alt="Blog CMS Dashboard" class="rounded-xl shadow-2xl border-4 border-emerald-500/30 w-full"/>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+      Featured <span class="text-emerald-400">CMS Projects</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Project 1 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-emerald-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Multi-user+Blog+Platform" alt="Multi-user Blog Platform" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+          </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-emerald-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Headless+CMS" alt="Headless CMS" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+          </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-emerald-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Personal+Blog+Engine" alt="Personal Blog Engine" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow Section -->
+<section id="workflow" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Development <span class="text-emerald-400">Process</span></h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-12">From ideation to deployment, I craft CMS solutions tailored for bloggers and content creators.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-emerald-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-emerald-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">📝</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Requirement Gathering</h3>
+        <p class="text-gray-400">Understand blogger needs and design content workflows optimized for ease and scalability.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-emerald-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-emerald-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">💻</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Development</h3>
+        <p class="text-gray-400">Build intuitive UI, REST/GraphQL APIs, and reliable databases using modern CMS architectures.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-emerald-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-emerald-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🚀</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Testing & Deployment</h3>
+        <p class="text-gray-400">Comprehensive testing and deployment to cloud platforms ensuring smooth publishing experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8">Get In <span class="text-emerald-400">Touch</span></h2>
+    <p class="text-gray-400 mb-12">Interested in building a custom CMS or blogging platform? Let’s connect.</p>
+    <a href="mailto:oluwolecharles@example.com" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-lg transition

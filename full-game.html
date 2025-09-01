@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roblox Full Game Developer | Oluwole Charles Peter</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: #0a192f; color: #ccd6f6; }
+    /* Replace pink with cyan */
+    .text-cyan-400 { color: #22d3ee; }
+    .bg-cyan-500 { background-color: #06b6d4; }
+    .bg-cyan-600:hover { background-color: #0891b2; }
+    .border-cyan-500 { border-color: #06b6d4; }
+    .hover\:text-cyan-400:hover { color: #22d3ee; }
+    .hover\:bg-cyan-500:hover { background-color: #06b6d4; }
+    .hover\:text-black:hover { color: #000; }
+    .hover\:border-cyan-400:hover { border-color: #22d3ee; }
+    .hover\:shadow-cyan-500\/20:hover { box-shadow: 0 0 10px rgba(6,182,212,0.2); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="peter.html" class="text-2xl font-bold text-cyan-400 hover:text-cyan-300">Charles Peter</a>
+    <ul class="flex space-x-8">
+      <li><a href="peter.html" class="text-gray-300 hover:text-yellow-400">Home</a></li>
+      <li><a href="#games" class="text-gray-300 hover:text-cyan-400">Games</a></li>
+      <li><a href="#workflow" class="text-gray-300 hover:text-cyan-400">Workflow</a></li>
+      <li><a href="#contact" class="text-gray-300 hover:text-cyan-400">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 px-6 sm:px-10 md:px-24">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-1/2">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
+        Roblox <span class="text-cyan-400">Full Game Developer</span>
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+        I create immersive, optimized, and engaging Roblox games—from world-building to scripting and multiplayer features, delivering seamless player experiences.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#games" class="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-6 py-3 rounded-lg">View Games</a>
+        <a href="#contact" class="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-black font-semibold px-6 py-3 rounded-lg">Hire Me</a>
+      </div>
+    </div>
+    <div class="md:w-1/2 mt-10 md:mt-0">
+      <img src="https://via.placeholder.com/600x400/1e293b/ccd6f6?text=Game+Showcase" alt="Game Showcase" class="rounded-xl shadow-2xl border-4 border-cyan-500/30 w-full"/>
+    </div>
+  </div>
+</section>
+
+<!-- Games Section -->
+<section id="games" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+      Featured <span class="text-cyan-400">Roblox Games</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Game 1 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Open+World+Adventure" alt="Open World Adventure" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-white mb-2">Open World Adventure</h3>
+          <p class="text-gray-400 text-sm">A vast exploration game with quests, NPC interactions, and multiplayer coop mechanics, designed for performance and engagement.</p>
+        </div>
+      </div>
+
+      <!-- Game 2 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Competitive+Shooter" alt="Competitive Shooter" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-white mb-2">Competitive Shooter</h3>
+          <p class="text-gray-400 text-sm">Fast-paced FPS with custom maps, player progression, and anti-cheat scripting, built for a responsive multiplayer experience.</p>
+        </div>
+      </div>
+
+      <!-- Game 3 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition-shadow">
+        <img src="https://via.placeholder.com/800x450/1e293b/ccd6f6?text=Tycoon+Simulator" alt="Tycoon Simulator" class="w-full h-48 object-cover"/>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-white mb-2">Tycoon Simulator</h3>
+          <p class="text-gray-400 text-sm">Engaging economy-based simulator with interactive UI, upgrades, and multiplayer trading features for immersive gameplay.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow Section -->
+<section id="workflow" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Game <span class="text-cyan-400">Development Process</span></h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-12">From concept and design to scripting and deployment, I cover all stages to bring your Roblox game ideas to life.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-cyan-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-cyan-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">📝</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Concept & Design</h3>
+        <p class="text-gray-400">Crafting game concepts, storyboards, level design, and mechanics tailored for engaging Roblox gameplay.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-cyan-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-cyan-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🛠️</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Scripting & Development</h3>
+        <p class="text-gray-400">Building game logic, multiplayer systems, UI, and performance optimization using Lua scripting in Roblox Studio.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-cyan-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-cyan-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🚀</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Testing & Launch</h3>
+        <p class="text-gray-400">Rigorous multiplayer testing, bug fixing, and polishing before publishing and post-launch updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Need a <span class="text-cyan-400">Roblox Game?</span></h2>
+    <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Let’s collaborate to create immersive Roblox experiences that captivate and grow your audience.</p>
+    <a href="mailto:contact@example.com" class="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-8 py-3 rounded-lg">Contact Me</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 py-8 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-gray-400 text-sm">&copy; 2025 Oluwole Charles Peter. Roblox Full Game Developer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="model.js"></script>
+</body>
+</html>

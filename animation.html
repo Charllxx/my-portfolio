@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Animation Gallery | Oluwole Charles Peter</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: #0a192f; color: #ccd6f6; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .animation-card {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .animation-card:hover {
+      transform: translateY(-5px);
+    }
+    .modal-overlay {
+      backdrop-filter: blur(8px);
+    }
+    .modal-video {
+      width: 90vw;
+      max-width: 1200px;
+      height: auto;
+      max-height: 80vh;
+    }
+    .video-thumbnail {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .video-thumbnail:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" class="text-2xl font-bold text-pink-400 hover:text-pink-300">Charles Peter</a>
+    <ul class="flex space-x-8">
+      <li><a href="peter.html" class="text-gray-300 hover:text-pink-400">Home</a></li>
+      <li><a href="#gallery" class="text-gray-300 hover:text-pink-400">Animations</a></li>
+      <li><a href="#workflow" class="text-gray-300 hover:text-pink-400">Workflow</a></li>
+      <li><a href="#contact" class="text-gray-300 hover:text-pink-400">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 px-6 sm:px-10 md:px-24">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <div class="md:w-1/2">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
+        Professional <span class="text-pink-400">Animation Gallery</span>
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+        Explore my collection of high-quality animations showcasing character movements, action sequences, and cinematic moments.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#gallery" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-6 py-3 rounded-lg">View Animations</a>
+        <a href="#contact" class="border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-black font-semibold px-6 py-3 rounded-lg">Contact Me</a>
+      </div>
+    </div>
+    <div class="md:w-1/2 mt-10 md:mt-0">
+      <div class="video-thumbnail rounded-xl shadow-2xl border-4 border-pink-500/30 overflow-hidden">
+        <video muted loop class="w-full h-auto" onclick="openAnimationModal(1)">
+          <source src="animation1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+      Animation <span class="text-pink-400">Collection</span>
+    </h2>
+    <div class="gallery-grid" id="galleryContainer">
+      <!-- Animation cards will be inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- Workflow Section -->
+<section id="workflow" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">My <span class="text-pink-400">Animation Process</span></h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-12">From concept to final render, I focus on creating fluid, expressive animations with excellent timing and weight.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🎬</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Concept & Storyboarding</h3>
+        <p class="text-gray-400">Planning the animation sequence with key poses and timing to establish the movement flow.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🕺</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Blocking & Keyframing</h3>
+        <p class="text-gray-400">Creating the main poses and establishing the timing and spacing of the animation.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">✨</div>
+        <h3 class="text-xl font-semibold text-white mb-3">Polishing & Refining</h3>
+        <p class="text-gray-400">Adding secondary motion, fine-tuning timing, and perfecting the animation curves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Need <span class="text-pink-400">Custom Animations?</span></h2>
+    <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Contact me to discuss your project requirements and get a quote.</p>
+    <a href="mailto:peteroluwolecharles@gmail.com" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-8 py-3 rounded-lg">Get in Touch</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 py-8 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-gray-400 text-sm">&copy; 2025 Oluwole Charles Peter. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Configuration
+  const totalAnimations = 78;
+  const missingVideoPlaceholder = 'https://via.placeholder.com/600x400/1e293b/ccd6f6?text=Animation+Missing';
+
+  // Create gallery on load
+  document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.getElementById('galleryContainer');
+    
+    for (let i = 1; i <= totalAnimations; i++) {
+      const animationCard = document.createElement('div');
+      animationCard.className = 'animation-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-pink-500/20';
+      
+      const videoContainer = document.createElement('div');
+      videoContainer.className = 'video-thumbnail';
+      videoContainer.innerHTML = `
+        <video muted loop class="w-full h-48 object-cover"
+               onclick="openAnimationModal(${i})">
+          <source src="animation${i}.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+      
+      // Add error handling for video
+      const video = videoContainer.querySelector('video');
+      video.onerror = function() {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'w-full h-48 bg-gray-700 flex items-center justify-center cursor-pointer';
+        placeholder.innerHTML = `<p class="text-gray-400">Animation ${i} not found</p>`;
+        placeholder.onclick = function() {
+          openAnimationModal(i);
+        };
+        videoContainer.replaceChild(placeholder, video);
+      };
+      
+      animationCard.appendChild(videoContainer);
+      
+      animationCard.innerHTML += `
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-white mb-2">Animation ${i}</h3>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400 text-sm">Click to view</span>
+            <span class="text-pink-400 text-sm">MP4</span>
+          </div>
+        </div>
+      `;
+      
+      gallery.appendChild(animationCard);
+    }
+  });
+
+  // Open modal with animation
+  function openAnimationModal(animationNumber) {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'fixed inset-0 z-50 modal-overlay bg-black bg-opacity-90 flex items-center justify-center p-4';
+    modalOverlay.onclick = function(e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    };
+
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.className = 'relative bg-gray-800 rounded-xl max-w-6xl w-full overflow-hidden border border-gray-700';
+    
+    // Create close button
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'absolute top-4 right-4 z-10 text-gray-300 hover:text-white text-2xl';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.onclick = closeModal;
+
+    // Create video container
+    const videoContainer = document.createElement('div');
+    videoContainer.className = 'bg-black flex items-center justify-center p-4';
+    
+    const video = document.createElement('video');
+    video.className = 'modal-video';
+    video.controls = true;
+    video.autoplay = true;
+    video.muted = false; // Unmute for modal view
+    video.innerHTML = `
+      <source src="animation${animationNumber}.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    `;
+    video.onerror = function() {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'w-full h-64 bg-gray-700 flex items-center justify-center';
+      placeholder.innerHTML = `<p class="text-gray-400">Animation ${animationNumber} not found</p>`;
+      videoContainer.replaceChild(placeholder, video);
+    };
+
+    videoContainer.appendChild(video);
+
+    // Create title bar
+    const titleBar = document.createElement('div');
+    titleBar.className = 'p-4 border-b border-gray-700 flex justify-between items-center';
+    titleBar.innerHTML = `
+      <h3 class="text-xl font-bold text-white">Animation ${animationNumber}</h3>
+      <span class="text-pink-400 text-sm">MP4 Video</span>
+    `;
+
+    // Assemble modal
+    modalContent.appendChild(closeBtn);
+    modalContent.appendChild(titleBar);
+    modalContent.appendChild(videoContainer);
+    modalOverlay.appendChild(modalContent);
+    
+    // Add to DOM
+    document.body.appendChild(modalOverlay);
+    document.body.style.overflow = 'hidden';
+    
+    // Focus the video for keyboard controls
+    setTimeout(() => {
+      video.focus();
+    }, 100);
+  }
+
+  // Close modal
+  function closeModal() {
+    const modal = document.querySelector('.modal-overlay');
+    if (modal) {
+      // Pause any playing videos before closing
+      const videos = modal.querySelectorAll('video');
+      videos.forEach(video => video.pause());
+      
+      modal.remove();
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Close with ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+</script>
+</body>
+</html>

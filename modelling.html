@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Modeling Portfolio | Oluwole Charles Peter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .image-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 0.5rem;
+            background-color: #111;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 50;
+            border-bottom: 1px solid rgba(31, 41, 55, 1);
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+        .modal-content-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-image {
+            max-height: 70vh;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 101;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 101;
+            padding: 15px;
+            user-select: none;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f59e0b;
+        }
+        .prev {
+            left: 20px;
+        }
+        .next {
+            right: 20px;
+        }
+        .image-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+        @media (max-width: 600px) {
+            .nav-arrow {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+                padding: 10px;
+            }
+            .modal-image {
+                max-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-pink-400 hover:text-pink-300">Charles Peter</a>
+            <ul class="flex space-x-8">
+                <li><a href="peter.html" class="text-gray-300 hover:text-pink-400">Home</a></li>
+                <li><a href="#gallery" class="text-gray-300 hover:text-pink-400">3D Gallery</a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-pink-400">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 sm:px-10 md:px-24">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
+                    3D Model <span class="text-pink-400">Portfolio</span>
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                    Explore my collection of high-quality 3D models showcasing detailed textures, lighting, and rendering techniques.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#gallery" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-6 py-3 rounded-lg">View Gallery</a>
+                    <a href="#contact" class="border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-black font-semibold px-6 py-3 rounded-lg">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-10 md:mt-0">
+                <div class="rounded-xl shadow-2xl border-4 border-pink-500/30 overflow-hidden">
+                    <div class="image-container">
+                        <img src="3dmodelling1.jpeg" alt="Featured 3D Model" onerror="this.src='https://via.placeholder.com/600x400/1e293b/ccd6f6?text=3D+Model'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+                3D Model <span class="text-pink-400">Gallery</span>
+            </h2>
+            <div class="project-grid" id="projectsContainer">
+                <!-- Cards will appear here automatically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">My <span class="text-pink-400">Workflow</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">From concept to final render, I follow a structured workflow to ensure high-quality results.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">📝</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Concept & Planning</h3>
+                    <p class="text-gray-400">Establishing the design, proportions, and key features of each model before creation begins.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🖌️</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Modeling & Sculpting</h3>
+                    <p class="text-gray-400">Creating the 3D geometry with attention to topology, edge flow, and proper proportions.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-pink-400 transition-transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-pink-400/10 rounded-lg flex items-center justify-center mb-6 text-2xl">🎨</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Texturing & Materials</h3>
+                    <p class="text-gray-400">Applying textures, materials, and shaders to bring the model to life with realistic surfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">Get In <span class="text-pink-400">Touch</span></h2>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Interested in my 3D modeling services? Reach out to discuss your project requirements.</p>
+            <a href="mailto:peteroluwolecharles@gmail.com" class="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-8 py-3 rounded-lg">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2023 Oluwole Charles Peter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for enlarged view with navigation -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <span class="nav-arrow prev">&#10094;</span>
+        <div class="modal-content-container">
+            <img class="modal-image" id="modalImage">
+            <div class="image-info">
+                <span id="imageCounter"></span> - <span id="imageName"></span>
+            </div>
+        </div>
+        <span class="nav-arrow next">&#10095;</span>
+    </div>
+
+    <script>
+        // Configuration
+        const modelCategories = [
+            { name: "Character", color: "yellow", emoji: "👤" },
+            { name: "Environment", color: "green", emoji: "🌲" },
+            { name: "Vehicle", color: "blue", emoji: "🚗" },
+            { name: "Prop", color: "purple", emoji: "🛋️" },
+            { name: "Architecture", color: "red", emoji: "🏛️" },
+            { name: "Weapon", color: "indigo", emoji: "⚔️" }
+        ];
+        const totalModels = 75;
+        const pngFiles = new Set([1, 2, 4, 5, 6, 15, 16]);
+        const missingImagePlaceholder = 'https://via.placeholder.com/800x450/1e293b/ccd6f6?text=3D+Model+Missing';
+        const missingModalImagePlaceholder = 'https://via.placeholder.com/1200x675/1e293b/ccd6f6?text=3D+Model+Missing';
+        
+        // Track current image index and store all image sources
+        let currentImageIndex = 0;
+        const imageSources = [];
+        const imageNames = [];
+        const imageCategories = [];
+        
+        // Modal elements
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModalBtn = document.getElementsByClassName("close-modal")[0];
+        const prevArrow = document.querySelector(".prev");
+        const nextArrow = document.querySelector(".next");
+        const imageCounter = document.getElementById("imageCounter");
+        const imageName = document.getElementById("imageName");
+
+        // Create gallery on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.getElementById('projectsContainer');
+            
+            for (let i = 1; i <= totalModels; i++) {
+                const category = modelCategories[i % modelCategories.length];
+                const extension = pngFiles.has(i) ? 'png' : 'jpeg';
+                const imgSrc = `3dmodelling${i}.${extension}`;
+                const imgName = `3D Model ${i}`;
+                
+                // Store image sources and names for navigation
+                imageSources.push(imgSrc);
+                imageNames.push(imgName);
+                imageCategories.push(category);
+                
+                // Create card
+                const card = document.createElement('div');
+                card.className = 'project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-pink-500/20';
+                card.innerHTML = `
+                    <div class="image-container">
+                        <img 
+                            src="${imgSrc}" 
+                            alt="3D Model ${i}" 
+                            loading="lazy"
+                            onerror="this.src='${missingImagePlaceholder}'"
+                            data-index="${i-1}"
+                        >
+                        <div class="project-overlay">
+                            <div>
+                                <h3 class="text-white font-bold text-lg mb-1">Model ${i}</h3>
+                                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium" 
+                                      style="background-color: rgba(234, 179, 8, 0.1); color: #f59e0b;">
+                                    ${category.emoji} ${category.name}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400 text-sm">3D Render</span>
+                            <span class="text-gray-500 text-sm">#${i.toString().padStart(2, '0')}</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Add click event to open modal
+                card.addEventListener('click', function() {
+                    currentImageIndex = parseInt(card.querySelector('img').getAttribute('data-index'));
+                    openModal(currentImageIndex);
+                });
+                
+                gallery.appendChild(card);
+            }
+        });
+
+        function openModal(index) {
+            currentImageIndex = index;
+            modal.style.display = "flex";
+            modalImg.src = imageSources[currentImageIndex];
+            updateModalInfo();
+            
+            // Add error handling for modal image
+            modalImg.onerror = function() {
+                modalImg.src = missingModalImagePlaceholder;
+                modalImg.alt = `${imageNames[currentImageIndex]} not found`;
+                modalImg.onerror = null;
+                imageName.textContent = "Image not available";
+            };
+            
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function navigate(direction) {
+            currentImageIndex += direction;
+            
+            // Wrap around if at beginning or end
+            if (currentImageIndex >= imageSources.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = imageSources.length - 1;
+            }
+            
+            modalImg.src = imageSources[currentImageIndex];
+            updateModalInfo();
+            
+            // Reset error handler in case previous image failed
+            modalImg.onerror = function() {
+                modalImg.src = missingModalImagePlaceholder;
+                modalImg.alt = `${imageNames[currentImageIndex]} not found`;
+                modalImg.onerror = null;
+                imageName.textContent = "Image not available";
+            };
+        }
+
+        function updateModalInfo() {
+            imageCounter.textContent = `${currentImageIndex + 1} / ${imageSources.length}`;
+            imageName.textContent = imageNames[currentImageIndex];
+        }
+
+        // Close modal when clicking the X
+        closeModalBtn.onclick = function() {
+            closeModal();
+        }
+
+        // Navigation arrows
+        prevArrow.onclick = function(e) {
+            e.stopPropagation();
+            navigate(-1);
+        }
+
+        nextArrow.onclick = function(e) {
+            e.stopPropagation();
+            navigate(1);
+        }
+
+        // Close modal when clicking outside the image
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === "flex") {
+                if (e.key === "ArrowLeft") {
+                    navigate(-1);
+                } else if (e.key === "ArrowRight") {
+                    navigate(1);
+                } else if (e.key === "Escape") {
+                    closeModal();
+                }
+            }
+        });
+
+        // Swipe support for touch devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modal.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        modal.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                navigate(1); // Swipe left
+            }
+            if (touchEndX > touchStartX + 50) {
+                navigate(-1); // Swipe right
+            }
+        }
+    </script>
+</body>
+</html>

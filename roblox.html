@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Script Showcase | Oluwole Charles Peter</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+        }
+        .code-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+        .video-container {
+            height: 180px;
+            overflow: hidden;
+            background-color: #111;
+            position: relative;
+            border-radius: 0.5rem;
+        }
+        .hover-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .hover-overlay {
+            opacity: 1;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-video {
+            max-height: 70vh;
+            max-width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 101;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 101;
+            padding: 15px;
+            user-select: none;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f59e0b;
+        }
+        .prev {
+            left: 20px;
+        }
+        .next {
+            right: 20px;
+        }
+        .video-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+        @media (max-width: 600px) {
+            .nav-arrow {
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+                padding: 10px;
+            }
+            .modal-video {
+                max-height: 50vh;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-yellow-400 hover:text-yellow-300 transition-colors">
+                Charles Peter
+            </a>
+            <ul class="flex space-x-8">
+                <li><a href="peter.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
+                <li><a href="#projects" class="text-gray-300 hover:text-yellow-400 transition-colors">Scripts</a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 sm:px-10 md:px-24 flex-grow">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
+                    Video <span class="text-yellow-400">Script</span> Portfolio
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                    A collection of 80 professional video scripts showcasing narrative structure, pacing techniques, 
+                    and creative storytelling approaches. Each script demonstrates different genres and formats.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+                        View Scripts
+                    </a>
+                    <a href="#contact" class="border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-10 md:mt-0">
+                <div class="relative rounded-xl shadow-2xl border-4 border-yellow-500/30 overflow-hidden">
+                    <video autoplay muted loop class="w-full">
+                        <source src="./scriptvid1.mp4" type="video/mp4" onerror="handleHeroVideoError()">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+                        <h3 class="text-white text-xl font-bold">Sample Script Preview</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+                Video <span class="text-yellow-400">Script</span> Collection
+            </h2>
+            
+            <div class="project-grid" id="projectsContainer">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                    Script <span class="text-yellow-400">Writing</span> Expertise
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Professional skills developed through years of video production and storytelling
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="group bg-gradient-to-br from-gray-800/50 to-gray-900/70 p-8 rounded-xl border border-gray-700 hover:border-yellow-400/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-yellow-400/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-400/20 transition-colors">
+                        <span class="text-2xl">✍️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Narrative Structure</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Crafting compelling story arcs with proper pacing, tension building, and satisfying resolutions 
+                        across different video formats and durations.
+                    </p>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="group bg-gradient-to-br from-gray-800/50 to-gray-900/70 p-8 rounded-xl border border-gray-700 hover:border-yellow-400/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-yellow-400/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-400/20 transition-colors">
+                        <span class="text-2xl">🎭</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Dialogue Writing</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Creating natural, character-appropriate dialogue that advances the plot while maintaining 
+                        authenticity and engaging the audience.
+                    </p>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="group bg-gradient-to-br from-gray-800/50 to-gray-900/70 p-8 rounded-xl border border-gray-700 hover:border-yellow-400/30 transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-yellow-400/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-yellow-400/20 transition-colors">
+                        <span class="text-2xl">🎬</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Visual Storytelling</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Writing scripts that translate powerfully to screen, with clear visual cues, shot descriptions, 
+                        and action sequences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 sm:px-10 md:px-24 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-white">
+                Get In <span class="text-yellow-400">Touch</span>
+            </h2>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Interested in professional script writing services? Reach out to discuss your video project!
+            </p>
+            <a href="mailto:peteroluwolecharles@gmail.com" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-3 rounded-lg transition-colors duration-300">
+                Contact Me
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <span class="sr-only">YouTube</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm">
+                &copy; 2025 Oluwole Charles Peter. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal for enlarged view with navigation -->
+    <div id="videoModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <span class="nav-arrow prev">&#10094;</span>
+        <div class="modal-content-container">
+            <video class="modal-video" id="modalVideo" controls>
+                <!-- Video source will be added by JavaScript -->
+            </video>
+            <div class="video-info">
+                <span id="videoCounter"></span> - <span id="videoName"></span>
+            </div>
+        </div>
+        <span class="nav-arrow next">&#10095;</span>
+    </div>
+
+    <script>
+        // Configuration
+        const colors = ['purple', 'blue', 'green', 'red', 'yellow', 'indigo', 'pink'];
+        const totalProjects = 80;
+        const missingVideoPlaceholder = 'https://via.placeholder.com/300x180/333/ccc/?text=Video+Missing';
+        const missingModalVideoPlaceholder = 'https://via.placeholder.com/800x600/333/ccc/?text=Video+Missing';
+        
+        // Track current video index and store all video sources
+        let currentVideoIndex = 0;
+        const videoSources = [];
+        const videoNames = [];
+        
+        // Modal elements
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+        const closeModalBtn = document.getElementsByClassName("close-modal")[0];
+        const prevArrow = document.querySelector(".prev");
+        const nextArrow = document.querySelector(".next");
+        const videoCounter = document.getElementById("videoCounter");
+        const videoName = document.getElementById("videoName");
+
+        // Create project cards
+        for (let i = 1; i <= totalProjects; i++) {
+            const color = colors[i % colors.length];
+            const vidSrc = `./scriptvid${i}.mp4`;
+            const vidName = `scriptvid${i}.mp4`;
+            const scriptType = i % 3 === 0 ? 'Commercial' : i % 2 === 0 ? 'Narrative' : 'Explainer';
+            
+            // Store video sources and names for navigation
+            videoSources.push(vidSrc);
+            videoNames.push(vidName);
+            
+            // Create card
+            const card = document.createElement('div');
+            card.className = `project-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-500/20 transition-all duration-300 border border-gray-700`;
+            card.innerHTML = `
+                <div class="video-container cursor-pointer">
+                    <video 
+                        id="vid-${i}"
+                        muted loop 
+                        class="w-full h-full object-cover"
+                        data-index="${i-1}"
+                        data-type="${scriptType}"
+                        data-color="${color}"
+                    >
+                        <source src="${vidSrc}" type="video/mp4">
+                    </video>
+                    <div class="hover-overlay flex items-end p-4">
+                        <span class="bg-black/80 text-white px-3 py-1 rounded-md text-sm font-medium">Script #${i}</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                        <h3 class="text-white font-medium truncate">Video Script ${i}</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-xs text-gray-300">MP4 Format</span>
+                            <span class="text-xs px-2 py-1 rounded-full bg-${color}-900/30 text-${color}-400">${scriptType}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event to open modal
+            card.addEventListener('click', function() {
+                currentVideoIndex = parseInt(card.querySelector('video').getAttribute('data-index'));
+                openModal(currentVideoIndex);
+            });
+            
+            // Add error handling for video
+            const vid = card.querySelector('video');
+            vid.onerror = function() {
+                const container = vid.parentElement;
+                container.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-gray-700">
+                        <span class="text-white">Video ${vidName} not found</span>
+                    </div>
+                `;
+                vid.onerror = null;
+            };
+            
+            document.getElementById('projectsContainer').appendChild(card);
+        }
+
+        // Auto-play thumbnails on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 1; i <= totalProjects; i++) {
+                const video = document.getElementById(`vid-${i}`);
+                const card = video?.closest('.project-card');
+                
+                if (card && video) {
+                    card.addEventListener('mouseenter', () => {
+                        video.play().catch(e => console.log('Autoplay prevented:', e));
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            }
+        });
+
+        function handleHeroVideoError() {
+            const heroVideo = document.querySelector('.hero-section video');
+            if (heroVideo) {
+                heroVideo.parentElement.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-gray-700">
+                        <span class="text-white">Featured video not found</span>
+                    </div>
+                `;
+            }
+        }
+
+        function openModal(index) {
+            currentVideoIndex = index;
+            modal.style.display = "flex";
+            
+            // Set video source and info
+            modalVideo.innerHTML = `
+                <source src="${videoSources[currentVideoIndex]}" type="video/mp4">
+                Your browser does not support the video tag.
+            `;
+            updateModalInfo();
+            
+            // Add error handling for modal video
+            modalVideo.onerror = function() {
+                const container = modalVideo.parentElement;
+                container.innerHTML = `
+                    <div class="w-full h-64 flex items-center justify-center bg-gray-700">
+                        <span class="text-white">Video ${videoNames[currentVideoIndex]} not found</span>
+                    </div>
+                `;
+                modalVideo.onerror = null;
+                videoName.textContent = "Video not available";
+            };
+            
+            // Play the video when modal opens
+            modalVideo.load();
+            modalVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            
+            // Pause the video when modal closes
+            modalVideo.pause();
+            
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function navigate(direction) {
+            currentVideoIndex += direction;
+            
+            // Wrap around if at beginning or end
+            if (currentVideoIndex >= videoSources.length) {
+                currentVideoIndex = 0;
+            } else if (currentVideoIndex < 0) {
+                currentVideoIndex = videoSources.length - 1;
+            }
+            
+            // Update video source
+            modalVideo.innerHTML = `
+                <source src="${videoSources[currentVideoIndex]}" type="video/mp4">
+                Your browser does not support the video tag.
+            `;
+            updateModalInfo();
+            
+            // Play the new video
+            modalVideo.load();
+            modalVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            
+            // Reset error handler in case previous video failed
+            modalVideo.onerror = function() {
+                const container = modalVideo.parentElement;
+                container.innerHTML = `
+                    <div class="w-full h-64 flex items-center justify-center bg-gray-700">
+                        <span class="text-white">Video ${videoNames[currentVideoIndex]} not found</span>
+                    </div>
+                `;
+                modalVideo.onerror = null;
+                videoName.textContent = "Video not available";
+            };
+        }
+
+        function updateModalInfo() {
+            videoCounter.textContent = `${currentVideoIndex + 1} / ${videoSources.length}`;
+            videoName.textContent = videoNames[currentVideoIndex];
+            
+            // Get script type from the original card
+            const originalCard = document.querySelector(`[data-index="${currentVideoIndex}"]`)?.closest('.project-card');
+            if (originalCard) {
+                const scriptType = originalCard.querySelector('video').getAttribute('data-type');
+                const color = originalCard.querySelector('video').getAttribute('data-color');
+                
+                // You could display this info in the modal if desired
+                // For example, add a badge showing the script type
+            }
+        }
+
+        // Close modal when clicking the X
+        closeModalBtn.onclick = function() {
+            closeModal();
+        }
+
+        // Navigation arrows
+        prevArrow.onclick = function(e) {
+            e.stopPropagation();
+            navigate(-1);
+        }
+
+        nextArrow.onclick = function(e) {
+            e.stopPropagation();
+            navigate(1);
+        }
+
+        // Close modal when clicking outside the video
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === "flex") {
+                if (e.key === "ArrowLeft") {
+                    navigate(-1);
+                } else if (e.key === "ArrowRight") {
+                    navigate(1);
+                } else if (e.key === "Escape") {
+                    closeModal();
+                }
+            }
+        });
+
+        // Swipe support for touch devices
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modal.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        modal.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                navigate(1); // Swipe left
+            }
+            if (touchEndX > touchStartX + 50) {
+                navigate(-1); // Swipe right
+            }
+        }
+    </script>
+</body>
+</html>

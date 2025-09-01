@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Viewer | Oluwole Charles Peter</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    .image-container {
+      transition: transform 0.3s ease;
+    }
+    .image-container:hover {
+      transform: scale(1.02);
+    }
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- Main Gallery -->
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8 text-center">Image Gallery</h1>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Thumbnail Items -->
+      <div class="image-container cursor-pointer rounded-lg overflow-hidden shadow-lg" onclick="openModal('image1.jpg', 'Mobile App Design')">
+        <img src="image1.jpg" alt="Mobile App Design" class="w-full h-48 object-cover">
+        <div class="p-4 bg-gray-800">
+          <h3 class="font-medium">Mobile App Design</h3>
+        </div>
+      </div>
+      
+      <div class="image-container cursor-pointer rounded-lg overflow-hidden shadow-lg" onclick="openModal('image2.jpg', 'Dashboard UI')">
+        <img src="image2.jpg" alt="Dashboard UI" class="w-full h-48 object-cover">
+        <div class="p-4 bg-gray-800">
+          <h3 class="font-medium">Dashboard UI</h3>
+        </div>
+      </div>
+      
+      <!-- Add more images as needed -->
+    </div>
+  </div>
+
+  <!-- Modal Image Viewer -->
+  <div id="imageModal" class="modal fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 hidden">
+    <div class="relative max-w-6xl w-full">
+      <button onclick="closeModal()" class="absolute -top-12 right-0 text-white hover:text-yellow-400 text-3xl">&times;</button>
+      
+      <div class="flex justify-between items-center mb-4">
+        <button onclick="prevImage()" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">Previous</button>
+        <h2 id="modalTitle" class="text-xl font-bold text-center"></h2>
+        <button onclick="nextImage()" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg">Next</button>
+      </div>
+      
+      <div class="flex justify-center">
+        <img id="modalImage" class="max-h-[70vh] object-contain rounded-lg" src="" alt="">
+      </div>
+      
+      <div class="mt-4 text-center text-gray-300" id="imageCounter"></div>
+    </div>
+  </div>
+
+  <script>
+    // Image data - replace with your actual images
+    const images = [
+      { src: 'image1.jpg', title: 'Mobile App Design' },
+      { src: 'image2.jpg', title: 'Dashboard UI' },
+      // Add more images here
+    ];
+    
+    let currentIndex = 0;
+
+    function openModal(src, title) {
+      currentIndex = images.findIndex(img => img.src === src);
+      updateModal();
+      document.getElementById('imageModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateModal();
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateModal();
+    }
+
+    function updateModal() {
+      const image = images[currentIndex];
+      document.getElementById('modalImage').src = image.src;
+      document.getElementById('modalImage').alt = image.title;
+      document.getElementById('modalTitle').textContent = image.title;
+      document.getElementById('imageCounter').textContent = `${currentIndex + 1} / ${images.length}`;
+    }
+
+    // Close modal when clicking outside image
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('imageModal').classList.contains('hidden')) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      }
+    });
+  </script>
+
+</body>
+</html>
